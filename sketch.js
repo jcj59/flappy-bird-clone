@@ -8,11 +8,21 @@ let background_x = 0;
 
 /** Creates canvas and instantiates initial game object. */
 function setup() {
-  createCanvas(800, 600);
+  var canvas = createCanvas(800, 600);
+  var canvas_x = (windowWidth - width) / 2;
+  var canvas_y = (windowHeight - height) / 4;
+  canvas.position(canvas_x, canvas_y);
   game = new Game();
   pipeSprite = loadImage('graphics/pipe.png');
   birdSprite = loadImage('graphics/bird.png');
   background_image = loadImage('graphics/background.png');
+}
+
+/** Recenters canvas whenever window is resized. */
+function windowResized() {
+  var canvas_x = (windowWidth - width) / 2;
+  var canvas_y = (windowHeight - height) / 4;
+  canvas.position(canvas_x, canvas_y);
 }
 
 /** Updates game object and high score and draws game object to screen. */
@@ -37,6 +47,7 @@ function draw() {
   if (game.state == States.Dead) {
     deadText();
   }
+  drawBorder();
 }
 
 /** Performs actions depending on state of game and which key is pressed. */
@@ -121,6 +132,14 @@ function showBackground() {
 /** Moves the background. */
 function updateBackground() {
   background_x -= SPEED;
+}
+
+function drawBorder() {
+  fill(0);
+  rect(0, 0, width, 2);
+  rect(0, 0, 2, height);
+  rect(0, height - 2, width, 2);
+  rect(width - 2, 0, 2, height);
 }
 
 
