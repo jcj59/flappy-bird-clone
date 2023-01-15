@@ -77,6 +77,26 @@ function keyPressed() {
   }
 }
 
+/** Performs actions depending on state of game when mouse is pressed. */
+function mousePressed() {
+  if (game.state == States.Alive) {
+    game.bird.up();
+    console.log("SPACE");
+  }
+
+  if (game.state == States.Start) {
+    game.state = States.Alive;
+    game.bird.up();
+    console.log("SPACE");
+  } else if (game.state == States.Dead) {
+    game = new Game();
+    game.state = States.Alive;
+    game.bird.up();
+    console.log("SPACE");
+  }
+}
+
+
 /** Writes text for gamestate start. */
 function startText() {
   frameRate(FRAME_RATE);
