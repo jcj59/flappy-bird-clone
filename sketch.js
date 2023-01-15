@@ -79,6 +79,7 @@ function keyPressed() {
 
 /** Writes text for gamestate start. */
 function startText() {
+  frameRate(FRAME_RATE);
   fill(0);
   textSize(24);
   textAlign(CENTER);

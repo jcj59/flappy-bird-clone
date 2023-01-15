@@ -18,6 +18,9 @@ var MIN_BOTTOM = 100;
 // Number of Pipes
 var PIPES = 4;
 
+// Frame Rate
+var FRAME_RATE = 30;
+
 // Game States
 const States = {
     Alive: "alive",
